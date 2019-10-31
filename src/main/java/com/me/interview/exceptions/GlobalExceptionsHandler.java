@@ -11,7 +11,7 @@ public class GlobalExceptionsHandler {
 
     @ExceptionHandler(value
             = ServiceException.class)
-    protected ResponseEntity<Object> handleServiceExeption(Exception ex, WebRequest request) {
+    public ResponseEntity<Object> handleServiceExeption(Exception ex, WebRequest request) {
         String bodyOfResponse = ex.getLocalizedMessage();
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
     }
