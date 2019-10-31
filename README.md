@@ -26,8 +26,8 @@ It supports both formats .
 * Swagger has been implemented , the api spec can be viewed from the below url's
    
    
-   http://localhost:8080/v2/api-docs
-   http://localhost:8080/swagger-ui.html#!/transactions-controller/transactionsUsingGET
+   1) http://localhost:8080/v2/api-docs
+   2) http://localhost:8080/swagger-ui.html#!/transactions-controller/transactionsUsingGET
    
 
 ## Execution steps 
