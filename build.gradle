@@ -7,30 +7,47 @@ plugins {
 group = 'com.me'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+jar {
+    baseName = 'codeME'
+    version = "1.0.0"
+}
+
+
+
+test {
+    useJUnitPlatform()
+   
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
+}
+
+
+configurations {
+}
+
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.0.RELEASE'
-
-    //  implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.0.RELEASE'
+    implementation("org.springframework.boot:spring-boot-starter:2.2.0.RELEASE")
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.9'
-    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
-// https://mvnrepository.com/artifact/org.springframework/spring-webflux
-    //  compile group: 'org.springframework', name: 'spring-webflux', version: '5.2.0.RELEASE'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.0.RELEASE'
-
-
-
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.0.RELEASE'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
